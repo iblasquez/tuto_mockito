@@ -10,7 +10,7 @@ Une javadoc et documentation permettant de faciliter l’utilisation du framewor
 Dans ce dépôt vous trouverez les exercices suivants :
 
 - Exercice 1 : [Premiers pas avec les doublures dans Mockito](enonces/HelloDoublure.md)
-- Exercice 2 : Ecrivez votre première doublure...
+- Exercice 2 : [Ecrivez votre première doublure...](enonces/PremiereDoublure.md)
 - Exercice 3 : Kata dice
 
 
