@@ -26,7 +26,7 @@ N'oubliez pas de remettre à jour votre **`pom.xml`**!!!
 Vous allez maintenant faire vos premiers pas avec :
 
 * [Stub (bouchon)](#stub)
-* [Mock (objet Factice](#mock)
+* [Mock (objet Factice)](#mock)
 
 
 ## 1. Le Stub (bouchon) <a id="stub"></a>
@@ -59,11 +59,11 @@ public class User {
 ```
 
 
-#### Le problème
+### Le problème
 Au cours de votre développement, vous devez écrire un test qui fera appel à la méthode **`getLogin`** (qui n'existe pas encore réellement). 
 
 
-#### La solution 
+### La solution 
 Pour simuler cela, créez et implémentez dans **`src/test/java`**  (dans le paquetage **`fr.unilim.iut`**), la classe **`TestDoublures`** et la méthode **`test_unPremierBouchon`** de la manière suivante :
 
 
@@ -108,7 +108,7 @@ Vous pouvez exécuter ce code (c-a-d lancer le test), mais comme pour l’instan
 En effet, si vous lancez ce code de test, le test sera forcément VERT !!!
 
 
-#### Utilisation du bouchonnage 
+### Utilisation du bouchonnage 
 
 A partir de maintenant, on peut donc utiliser **`getLogin`** n'importe où dans la suite du test.  
 A chaque fois que **`getLogin`** sera appelé, il renverra **"alice"**.  
@@ -137,7 +137,7 @@ Commentez ou supprimez cette dernière assertion qui fait échouer le test.
 
 ## 2. Le Mock (objet Factice) <a id="mock"></a>
 
-Du stub au mock, il n’y a qu’un pas puisqu'un mock permet en plus de bouchonner un comportement, de mettre en place une **vérification comportementale** c-a-d de vérifier quelle fonction a été appelée, avec quel(s) argument(s), combien de fois …. 
+Du stub au mock, il n’y a qu’un pas puisqu'un mock permet en plus de bouchonner un comportement, de mettre en place une **vérification comportementale** c-a-d de vérifier quelle fonction a été appelée, avec quel(s) argument(s), combien de fois. 
 
 
 
@@ -196,7 +196,7 @@ Ces exemple montrent que le mock est un objet simulé dont le comportement est d
 Avec un mock, l’assertion du test unitaire est réalisée, comme nous venons de le montrer, via un appel à **`verify`** 
 
 
-Pour tester les différentes options de vérification comportementale possible qu’offre la méthode verifiy, vous pouvez terminer cet exercice en implémentant et testant l’exemple suivant 
+Pour tester les différentes options de vérification comportementale possible qu’offre la méthode **`verifiy`**, vous pouvez terminer cet exercice en implémentant et testant l’exemple suivant 
 (extrait de la rubrique **Verifying exact number of invocations / at least x / never** de la javadoc : [https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html#at_least_verification](https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html#at_least_verification))
 
 
