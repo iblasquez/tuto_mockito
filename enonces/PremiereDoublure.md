@@ -1,6 +1,6 @@
 # Ecrivez votre première doublure …
 
-[Créez un nouveau projet maven](https://github.com/iblasquez/Back2Basics_Developpement/blob/master/CreerProjetMavenEclipse.md) que vous appellerez **`firstdoublure`** et ajoutez une dépendance vers [Mockito](http://mockito.org/) au **`pom.xml`** de ce projet. 
+[Créez un nouveau projet maven](https://github.com/iblasquez/Back2Basics_Developpement/blob/master/CreerProjetMavenEclipse.md) que vous appellerez **`firstdoublure`** et **ajoutez une dépendance vers [Mockito](http://mockito.org/)** au **`pom.xml`** de ce projet. 
 
 Imaginez que vous êtes en train de travailler sur une application dans laquelle on souhaite maintenant créer des utilisateurs dont le mot de passe est correctement haché.
 
@@ -11,16 +11,16 @@ Vous vous mettez d’accord sur l’interface de ce composant :
 ```JAVA   
 
 	public interface HashProvider {
-       String hash(String text);
+		String hash(String text);
 	}
 
 ```
 
-Pour vous, ce composant n’est donc pas disponible pour le moment, seule son l’interface est connue.
+Pour vous, ce composant n’est donc pas disponible pour le moment, seule son l’interface est connue.  
 Vous devez donc **commencer par ajouter l’interface** **`HashProvider`** dans le code source de votre projet (**`src/main/java`**)
 
-Votre travail consiste ensuite à développer un service qui va permettre de créer un utilisateur.
-Vous allez donc par déclarer, à votre tour, une interface **`UserService`** qui propose le service que vous êtes en train de développer.
+Votre travail consiste ensuite à développer un service qui va permettre de créer un utilisateur.  
+Vous allez donc déclarer, à votre tour, une interface **`UserService`** qui propose le service que vous êtes en train de développer.    
 Dans **`src/main/java`**, ajoutez donc maintenant l’interface **`UserService`** suivante :
   
 ```JAVA  
@@ -31,8 +31,8 @@ Dans **`src/main/java`**, ajoutez donc maintenant l’interface **`UserService`*
 
 ```
 
-Pour que ce code puisse compiler, il faut disposer de la classe User que vous vous empressez d’implémenter le plus simplement possible.
-Dans **`src/main/java`**, vous ajoutez donc la classe User suivante :
+Pour que ce code puisse compiler, il faut disposer de la classe **`User`** que vous vous empressez d’implémenter le plus simplement possible.
+Dans **`src/main/java`**, vous ajoutez donc la classe **`User`** suivante :
 
 ```JAVA  
 
@@ -60,7 +60,7 @@ Dans **`src/main/java`**, vous ajoutez donc la classe User suivante :
 
 **Vérifiez que votre code compile bien !** … avant de continuer :smile:  
 
-Il ne vous reste plus qu’à implémenter le service **`createUser`** qui vous a été demandé.
+Il ne vous reste plus qu’à implémenter le service **`createUser`** qui vous a été demandé.  
 … Et vous l’implémentez le plus simplement possible dans la classe **`UserServiceImpl`** en faisant appel au **`HashProvider`** que votre collègue est en train d’écrire de son côté …
 
 ```JAVA  
@@ -87,7 +87,7 @@ Ajoutez la classe **`UserServiceImpl`** dans votre **`src/main/java`** !
 Vérifiez que votre code compile !  
 Votre implémentation terminée, il ne vous reste plus qu’à la tester !
 
-Dans **`src/test/java`**, créez une classe UserServiceImplTest et commencez à l’implémenter comme suit :
+Dans **`src/test/java`**, créez une classe **`UserServiceImplTest`** et commencez à l’implémenter comme suit :
 
 ```JAVA  
 
@@ -96,7 +96,7 @@ Dans **`src/test/java`**, créez une classe UserServiceImplTest et commencez à 
 
 	public class UserServiceImplTest {
 
-   		@Test
+		@Test
     	public void should_create_user_with_hashed_password() {
         
         		UserService userService = new UserServiceImpl(???);
@@ -105,7 +105,7 @@ Dans **`src/test/java`**, créez une classe UserServiceImplTest et commencez à 
 
          		assertEquals(user.firstName(), "Bob"); 
          		assertEquals(user.hashedPassword(), "???"); 
-    	}
+		}
 	}
 
 ```
@@ -113,7 +113,7 @@ Dans **`src/test/java`**, créez une classe UserServiceImplTest et commencez à 
 Cette classe doit vous permettre au travers de la méthode **`should_create_user_with_hashed_password`** de tester que votre service fonctionne correctement c-a-d que l’utilisateur est bien créé avec un mot de passe correctement haché (différent de celui saisi).
 
 Mais que mettre dans les **`???`** puisque le composant qui est censé fournir le mot de passe crypté n’est pas encore disponible puisque votre collègue est justement en train de le développer …  
-La solution à ce problème consiste bien sûr à utiliser une doublure de **`HashProvider`** pour simuler le comportement attendu …
+La solution à ce problème consiste bien sûr à utiliser une doublure de **`HashProvider`** pour simuler le comportement attendu.
 
 **A vous de jouer !!!**  
 **Complétez ce test avec une doublure de type `mock` et faites le passer au VERT !!!**
