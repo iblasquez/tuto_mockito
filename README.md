@@ -2,19 +2,20 @@
 
 
 La page officielle du framework Mockito est accessible à l'adresse suivante [http://mockito.org/](http://mockito.org/)  
-Une javadoc et documentation permettant de faciliter l’utilisation du framework Mockito est disponible ici : [https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html ](https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html )
+Une javadoc et documentation permettant de faciliter l’utilisation du framework Mockito est disponible ici : [https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html](https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html)
 
 <img src="https://github.com/mockito/mockito.github.io/raw/master/img/logo%402x.png" alt="Logo Mockito" width="400">
 
 
 Dans ce dépôt vous trouverez les exercices suivants :
 
-- Exercice 1 : [Premiers pas avec les doublures dans Mockito](enonces/HelloDoublure.md)
-- Exercice 2 : [Ecrivez votre première doublure...](enonces/PremiereDoublure.md)
-- Exercice 3 : Kata dice
+- Exercice 1 : [**Premiers pas avec les doublures dans Mockito**](enonces/HelloDoublure.md)
+- Exercice 2 : [**Ecrivez votre première doublure...**](enonces/PremiereDoublure.md)
+- Exercice 3 : [**Kata dice**](enonces/KataDice.md)
 
+Au préalable, vous pouvez consulter le [**cours sur les doublures de test**](https://github.com/iblasquez/enseignement-iut-m3105-conception-avancee/blob/master/slides/TestDouble_Mockito.pdf).
 
-
+... Et pourquoi pas pour terminer, jetez un petit coup d'oeil sur le [texte de la saynète ***Doublures en Folie***](http://agilitateur.azeau.com/public/doublures-en-folie/doublures-en-folie.v1.html) imaginée par [Olivier Azeau](https://twitter.com/oaz) (teasing [ici](https://www.youtube.com/watch?v=5gkmE0lfkrs))
 
 ## On en discute ?
 Pour les discussions, c'est par [là](https://github.com/iblasquez/tuto_mockito/issues)  
