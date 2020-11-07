@@ -15,13 +15,52 @@ Pour cela, ajoutez la dépendance **`mockito-core`** dans le bloc **`<dependenci
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>2.10.0</version>
+			<version>3.6.0</version>
 			<scope>test</scope>
 		</dependency>
 ```
 
+
+
+
 Pour connaître la **`version en cours`**, rendez-vous sur le [site de Mockito](http://mockito.org/) et relevez le numéro de version indiquée en bleu à côté de Maven Central : ![Wizard pour créer un projet maven](https://maven-badges.herokuapp.com/maven-central/org.mockito/mockito-core/badge.svg)  
-N'oubliez pas de remettre à jour votre **`pom.xml`**!!!
+N'oubliez pas de sauver votre **`pom.xml`** et d'actualiser ce **`pom`** pour que les dépendances soient bien prises en compte (sous Eclipse Maven-> Update Projects et ne pas oublier de cocher Force Updates...)
+
+Au final, Votre **`pom.xml`** devrait ressembler à :
+
+```XML  
+
+
+	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.unilim.iut</groupId>
+  <artifactId>hellodoublure</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  
+  <properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+		<junit.version>4.12</junit.version>
+		<mockito.version>3.6.0</mockito.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
+```
 
 Vous allez maintenant faire vos premiers pas avec :
 
