@@ -1,13 +1,13 @@
 # Prise en main des doublures de test et de Mockito 
 
 
-La page officielle du framework Mockito est accessible à l'adresse suivante [http://mockito.org/](http://mockito.org/)  
-Une javadoc et documentation permettant de faciliter l’utilisation du framework Mockito est disponible ici : [https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html](https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html)
+La page officielle du framework Mockito est accessible à l'adresse suivante [https://site.mockito.org/](https://site.mockito.org/)  
+Une javadoc et documentation permettant de faciliter l’utilisation du framework Mockito est disponible ici : [https://www.javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html](https://www.javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html)
 
 <img src="https://github.com/mockito/mockito.github.io/raw/master/img/logo%402x.png" alt="Logo Mockito" width="400">
 
 
-Au préalable, vous pouvez consulter le [**cours sur les doublures de test**](https://github.com/iblasquez/enseignement-iut-m3105-conception-avancee/blob/master/slides/TestDouble_Mockito.pdf).
+Au préalable, vous pouvez consulter le [**cours sur les doublures de test**](https://github.com/iblasquez/enseignement-but2-developpement/blob/master/cours/TestDouble_Mockito.pdf).
 
 Dans ce dépôt vous trouverez les exercices suivants :
 

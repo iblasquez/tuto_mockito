@@ -1,6 +1,6 @@
 # Ecrivez votre première doublure …
 
-[Créez un nouveau projet maven](https://github.com/iblasquez/Back2Basics_Developpement/blob/master/CreerProjetMavenEclipse.md) que vous appellerez **`firstdoublure`** et **ajoutez une dépendance vers [Mockito](http://mockito.org/)** au **`pom.xml`** de ce projet. 
+[Créez un nouveau projet maven](https://github.com/iblasquez/Back2Basics_Developpement/blob/master/CreerProjetMavenEclipse.md) que vous appellerez **`firstdoublure`** et **ajoutez une dépendance vers [Mockito](https://site.mockito.org/)** au **`pom.xml`** de ce projet. 
 
 Imaginez que vous êtes en train de travailler sur une application dans laquelle on souhaite maintenant créer des utilisateurs dont le mot de passe est correctement haché.
 
@@ -84,15 +84,13 @@ Il ne vous reste plus qu’à implémenter le service **`createUser`** qui vous 
 
 Ajoutez la classe **`UserServiceImpl`** dans votre **`src/main/java`** !
 
-Vérifiez que votre code compile !  
+Vérifiez que votre code compile ! Pour mieux comprendre la conception que vous venez d'implémenter, **à l'aide de votre IDE, procédez à un petit reverse sur le code métier (`src/main/java`) pour visualiser le diagramme de classes correspondant.**  
+ 
 Votre implémentation terminée, il ne vous reste plus qu’à la tester !
 
-Dans **`src/test/java`**, créez une classe **`UserServiceImplTest`** et commencez à l’implémenter comme suit :
+Dans **`src/test/java`**, créez une classe **`UserServiceImplTest`** et commencez à l’implémenter comme suit avec les **`import`** qui permettent de faire compiler le code en ne laissant qu'une erreur sur l'instruction à compléter (celle avec `new UserServiceImpl(???)`)
 
 ```JAVA  
-
-	import static org.junit.Assert.assertEquals;
-	import org.junit.Test;
 
 	public class UserServiceImplTest {
 

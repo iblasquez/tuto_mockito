@@ -2,11 +2,11 @@
 
 
 Dans ce premier exercice, vous allez écrire vos premières doublures Java générées à l’aide du framework Mockito.   
-Les exemples à implémenter sont ceux qui illustrent le [cours Doublures de tests]().
+Les exemples à implémenter sont ceux qui illustrent le [cours Doublures de tests](https://github.com/iblasquez/enseignement-but2-developpement/blob/master/cours/TestDouble_Mockito.pdf).
 
 
 Commencez par [créer un projet maven](https://github.com/iblasquez/Back2Basics_Developpement/blob/master/CreerProjetMavenEclipse.md) que vous appellerez **`hellodoublure`**.  
-Pour pouvoir générer des doublures, **ajoutez une dépendance vers le [framework Mockito](http://mockito.org/)** à votre **`pom.xml`**.  
+Pour pouvoir générer des doublures, **ajoutez une dépendance vers le [framework Mockito](https://site.mockito.org/)** à votre **`pom.xml`**.  
 Pour cela, ajoutez la dépendance **`mockito-core`** dans le bloc **`<dependencies>…</dependencies>`** de votre **`pom.xml`**
 
 
@@ -15,7 +15,7 @@ Pour cela, ajoutez la dépendance **`mockito-core`** dans le bloc **`<dependenci
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>3.6.0</version>
+			<version>4.8.0</version>
 			<scope>test</scope>
 		</dependency>
 ```
@@ -23,44 +23,8 @@ Pour cela, ajoutez la dépendance **`mockito-core`** dans le bloc **`<dependenci
 
 
 
-Pour connaître la **`version en cours`**, rendez-vous sur le [site de Mockito](http://mockito.org/) et relevez le numéro de version indiquée en bleu à côté de Maven Central : ![Wizard pour créer un projet maven](https://maven-badges.herokuapp.com/maven-central/org.mockito/mockito-core/badge.svg)  
+Pour connaître la **`version en cours`**, rendez-vous sur le [site de Mockito](https://site.mockito.org/) et relevez le numéro de version indiquée en bleu à côté de Maven Central : ![Wizard pour créer un projet maven](https://maven-badges.herokuapp.com/maven-central/org.mockito/mockito-core/badge.svg)  
 N'oubliez pas de sauver votre **`pom.xml`** et d'actualiser ce **`pom`** pour que les dépendances soient bien prises en compte (sous Eclipse Maven-> Update Projects et ne pas oublier de cocher Force Updates...)
-
-Au final, Votre **`pom.xml`** devrait ressembler à :
-
-```XML  
-
-
-	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.unilim.iut</groupId>
-  <artifactId>hellodoublure</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  
-  <properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-		<junit.version>4.12</junit.version>
-		<mockito.version>3.6.0</mockito.version>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>${mockito.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-</project>
-```
 
 Vous allez maintenant faire vos premiers pas avec :
 
@@ -81,7 +45,7 @@ Imaginez que vous êtes chargés de développer la partie concernant la ***messa
 Le travail de votre collègue va, entre autres, consister à fournir une implémentation de la classe **`User`** qui exposera un service de type **`getLogin`** (que vous allez devoir utiliser pour implémenter la messagerie). Vous vous mettez d’accord sur la signature de cette méthode qui pour l’instant sera écrite de la manière la plus simple possible c-a-d sous la forme : **`public Object getLogin()`**.
 
 
-Dans **`src/test/java`** (dans le paquetage **`fr.unilim.iut`**), créez et implémentez la classe **`User`** de la manière suivante :
+Dans **`src/main/java`** (dans le paquetage **`fr.unilim.iut`**), créez et implémentez la classe **`User`** de la manière suivante :
 
 ```JAVA 
 
@@ -103,17 +67,16 @@ Au cours de votre développement, vous devez écrire un test qui fera appel à l
 
 
 ### La solution 
-Pour simuler cela, créez et implémentez dans **`src/test/java`**  (dans le paquetage **`fr.unilim.iut`**), la classe **`TestDoublures`** et la méthode **`test_unPremierBouchon`** de la manière suivante :
+Pour simuler cela, créez et implémentez dans **`src/test/java`**  (dans le paquetage **`fr.unilim.iut`**), la classe **`TestDoublures`** et la méthode **`test_unPremierStub`** de la manière suivante :
 
 
 ```JAVA  
 
-   import org.junit.Test;  
 
    public class TestDoublures { 
 	
 	@Test
-	public void test_UnPremierStub() {
+	void test_UnPremierStub() {
 
 		User user = mock(User.class);
 		when(user.getLogin()).thenReturn("alice");
@@ -159,7 +122,7 @@ Vous devriez voir s'afficher **`alice`** dans la console ….
 
 Pour vérifier ce « bon » comportement, nous allons maintenant faire appel à **`getLogin`** dans l’étape d’assertion du test.  
 En fin de test, ajoutez l’étape d’***Assertion*** suivante :  **`assertEquals(user.getLogin(), "alice");`**  
-en n’oubliant pas d’importer :  **`import static org.junit.Assert.assertEquals;`**
+en n’oubliant pas l'**`import static`** pour **`assertEquals`** !
 
 **Compilez et exécutez !**  
 Le test doit passer au VERT !!!
@@ -172,7 +135,7 @@ Le test est en échec car la valeur attendue est **`bob`**  et c’est toujours 
 Commentez ou supprimez cette dernière assertion qui fait échouer le test.  
 **Relancez le test pour continuer sur une barre VERTE !!!**
 
-**Remarque :** Dans cet exemple, nous avons utilisé la méthode bouchonnée dans l'étape d'assertion car nous voulions illustrer le « bon » comportement du bouchon… Dès lors qu'une méthode est bouchonnée, elle va pouvoir être utilisée n’importe où dans le test (et notamment dans l'étape **A**rrange du pattern A*A*A) dès que l’objet sous test aura besoin du service bouchonné pour implémenter correctement le comportement à tester …
+**Remarque :** Dans cet exemple, nous avons utilisé la méthode bouchonnée dans l'étape d'assertion car nous voulions illustrer le « bon » comportement du bouchon… Dès lors qu'une méthode est bouchonnée, elle va pouvoir être utilisée n’importe où dans le test (et notamment dans l'étape **A**rrange du pattern A**A**A) dès que l’objet sous test aura besoin du service bouchonné pour implémenter correctement le comportement à tester …
 
 ## 2. Le Mock (objet Factice) <a id="mock"></a>
 
@@ -185,7 +148,7 @@ Dans la classe **`TestDoublures`**, ajoutez la méthode de test suivante :
 ```JAVA  
 
     @Test
-	public void test_UnPremierMock() {
+	void test_UnPremierMock() {
 
 		User user = mock(User.class);
 		when(user.getLogin()).thenReturn("alice");
@@ -231,12 +194,12 @@ Le test doit passer au VERT !!!
 	Le test doit être VERT maintenant !!!
 
 
-Ces exemple montrent que le mock est un objet simulé dont le comportement est décrit spécifiquement pour un test unitaire dans un test unitaire.
+Ces exemples montrent que le mock est un objet simulé dont le comportement est décrit spécifiquement pour un test unitaire dans un test unitaire.
 Avec un mock, l’assertion du test unitaire est réalisée, comme nous venons de le montrer, via un appel à **`verify`** 
 
 
 Pour tester les différentes options de vérification comportementale possible qu’offre la méthode **`verifiy`**, vous pouvez terminer cet exercice en implémentant et testant l’exemple suivant 
-(extrait de la rubrique **Verifying exact number of invocations / at least x / never** de la javadoc : [https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html#at_least_verification](https://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html#at_least_verification))
+(extrait de la rubrique **Verifying exact number of invocations / at least x / never** de la javadoc : [https://www.javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#exact_verification](https://www.javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#exact_verification))
 
 
 ```JAVA    

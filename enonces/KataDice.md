@@ -42,7 +42,7 @@ Après 5 égalités, le jeu se termine sans vainqueur.
 ### Mise en place du projet :
 
 [Créer un nouveau projet maven](https://github.com/iblasquez/Back2Basics_Developpement/blob/master/CreerProjetMavenEclipse.md)  que vous appellerez **`gameofdices`**.  
-Configurer le **`pom.xml`** comme indiqué [ici](https://github.com/iblasquez/Back2Basics_Developpement/blob/master/CreerProjetMavenEclipse.md) afin d'utiliser les dernières versions de **Java** et **[JUnit](http://junit.org/junit4/)** et ajouter le framework **[Mockito](http://site.mockito.org/)** comme dépendance à ce projet.
+Configurer le **`pom.xml`** afin d'utiliser vos versions habituelles de **Java** et de **JUnit** et d'ajouter le framework **[Mockito](http://site.mockito.org/)** comme dépendance à ce projet.
 
 
  
@@ -75,7 +75,7 @@ Implémentez, dans un premier temps, la classe **`Dice`** de la manière suivant
 
 ***Quelques remarques sur ce code :***  
 
-* dans le cadre de ce kata, nous considérons que **seulement un dé à 6 faces** sera utilisé.  
+* dans le cadre de ce kata, nous considérons qu'**un dé à 6 faces uniquement** sera utilisé.  
 * un objet de type **`Random`** sera fourni à la création du dé pour prendre en compte le côté reproductible du lancer.
 * une exception de type **`RuntimeException`** est utilisée. Une **`RuntimeException`** soulève normalement une erreur de programmation. Ici, ce devrait donc plutôt être une classe d'exception personnalisée montrant l’intention métier qui devrait être levée. Comme ce kata se focalise sur les tests et les mocks (plutôt que sur les exceptions), nous nous contenterons pour le moment d'une **`RuntimeException`**, même si cette dernière fait apparaître une certaine dette technique :smile:
 
@@ -89,7 +89,7 @@ Pour vérifier le critère d’acceptation ***le dé a 6 faces et retourne un no
 ```JAVA    
 
 	@Test
-	public void rollReturnsAValue() {
+	void rollReturnsAValue() {
 		theDice = new Dice(new Random());
 		for (int i = 0; i < 100; i++) {
 			int result = theDice.roll();
@@ -107,11 +107,12 @@ Pour vérifier le critère d’acceptation ***le dé a 6 faces et retourne un no
 
 	```JAVA  
 
-		@Test(expected = RuntimeException.class)
-		public void identifyBadValuesGreaterThanNumberOfFaces() {
+		@Test  
+		void identifyBadValuesGreaterThanNumberOfFaces() {
 			???
 			theDice = new Dice(???);
-			theDice.roll();
+			theDice.roll();  
+			assertThrows(RuntimeException.class, () -> theDice.roll());
 		}  
 
 	```  
@@ -120,11 +121,12 @@ Pour vérifier le critère d’acceptation ***le dé a 6 faces et retourne un no
 
 	```JAVA  
 
-    	@Test(expected = RuntimeException.class)
-    	public void identifyBadValuesLesserThanOne() {
+    	@Test  
+    	void identifyBadValuesLesserThanOne() {
         	???
         	theDice = new Dice(???);
         	theDice.roll();
+			assertThrows(RuntimeException.class, () -> theDice.roll());
     	}
 
 	```  
@@ -148,12 +150,12 @@ Pour vérifier le critère d’acceptation ***le dé a 6 faces et retourne un no
 			//…à compléter avec l’implémentation donnée ci-dessus
 		}
 
-		@Test(expected = RuntimeException.class)
+		@Test
 		public void identifyBadValuesGreaterThanNumberOfFaces() {
 			//…à compléter avec l’implémentation donnée ci-dessus
 		}
 
-		@Test(expected = RuntimeException.class)
+		@Test
 		public void identifyBadValuesLesserThanOne() {
 			//…à compléter avec l’implémentation donnée ci-dessus
 		}
@@ -180,20 +182,22 @@ public class DiceTest {
 		}
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void identifyBadValuesGreaterThanNumberOfFaces() {
 		Random tooMuch = mock(Random.class);
 		when(tooMuch.nextInt(anyInt())).thenReturn(7);
 		theDice = new Dice(tooMuch);
 		theDice.roll();
+		assertThrows(RuntimeException.class, () -> theDice.roll());
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void identifyBadValuesLesserThanOne() {
 		Random notEnough = mock(Random.class);
 		when(notEnough.nextInt(anyInt())).thenReturn(-1);
 		theDice = new Dice(notEnough);
 		theDice.roll();
+		assertThrows(RuntimeException.class, () -> theDice.roll());
 	}
 
 }
@@ -250,27 +254,24 @@ Pour vérifier le critère d’acceptation : ***un joueur a un nom et expose la 
 * après avoir joué, la dernière valeur doit être différente de la valeur par défaut (c-a-d différente de -1).
 
  
-Tester le code de classe **`Player`** revient donc à écrire la classe **`PlayerTest`** suivante :
+Tester le code de classe **`Player`** revient donc à écrire la classe **`PlayerTest`** avec les `import` qui vont bien :
 
 
 ```JAVA  
 
-	import java.util.Random;  
-	import org.junit.Test;
-	import static org.junit.Assert.*;
-
+	
 	public class PlayerTest {
 
 		Player player;
 
 		@Test
-		public void lastValueNotInitialized() {
+		void lastValueNotInitialized() {
 			player = new Player("John Doe", new Dice(new Random()));
 			assertEquals(player.getLastValue(), -1);
 		}
 
 		@Test
-		public void lastValueInitialized() {
+		void lastValueInitialized() {
 			player = new Player("John Doe", new Dice(new Random()));
 			player.play();
 			assertNotEquals(player.getLastValue(), -1);
@@ -349,13 +350,13 @@ Modifiez la classe **`PlayerTest`** en faisant apparaître **`isPresent`**.
 		Player player;
 
 		@Test
-		public void lastValueNotInitialized() {
+		void lastValueNotInitialized() {
 			player = new Player("John Doe", new Dice(new Random()));
 			assertFalse(player.getLastValue().isPresent());
 		}
 
 		@Test
-		public void lastValueInitialized() {
+		void lastValueInitialized() {
 			player = new Player("John Doe", new Dice(new Random()));
 			player.play();
 			assertTrue(player.getLastValue().isPresent());
@@ -418,7 +419,7 @@ Implémentez avec un mock la méthode de test **`throwDiceOnlyTwice`** dans la c
 ```JAVA   
 
 	@Test
-	public void throwDiceOnlyTwice() {
+	void throwDiceOnlyTwice() {
 		Dice dice = mock(Dice.class);
 		player = new Player("John Doe", dice);
 		player.play();
@@ -438,7 +439,7 @@ Un tel test pourrait s’écrire de la manière suivante.
 ```JAVA  
 
 	@Test
-	public void keepTheMaximum() {
+	void keepTheMaximum() {
 		Dice dice = mock(Dice.class);
 		player = new Player("John Doe", dice);
 
@@ -540,11 +541,6 @@ Ecrire dans **`src/test/main`** une classe **`GameTest`** qui décrit dans le co
 
 ```JAVA   
 
-	import org.junit.Test;
-	import static org.junit.Assert.*;
-	import static org.mockito.Mockito.*;
-	import java.util.Optional;
-
 	public class GameTest {
 
 		Game game;
@@ -565,7 +561,7 @@ Ecrire dans **`src/test/main`** une classe **`GameTest`** qui décrit dans le co
 
 ```
 
-Après avoir implémenté **`GameTest`**, **exécutez les tests :** ils doivent passer AU VERT !!!
+Après avoir implémenté **`GameTest`** avec les `import` qui vont bien, **exécutez les tests :** ils doivent passer AU VERT !!!
 
 
 #### 4.b.2 Pour vérifier que le jeu est bien capable de ne désigner aucun vainqueur après avoir pris en compte 5 égalités,
@@ -591,7 +587,7 @@ Pour (d)écrire ce scénario, un objet de type **`Spy`** semble donc plus adapt�
 ```JAVA  
 
 	@Test
-	public void noWinnerAfter5Attempts() {
+	void noWinnerAfter5Attempts() {
 		Dice single = mock(Dice.class);
 		when(single.roll()).thenReturn(1);
 
