@@ -95,7 +95,7 @@ Dans **`src/test/java`**, créez une classe **`UserServiceImplTest`** et commenc
 	public class UserServiceImplTest {
 
 		@Test
-    	public void should_create_user_with_hashed_password() {
+    	void should_create_user_with_hashed_password() {
         
         		UserService userService = new UserServiceImpl(???);
          	
@@ -117,7 +117,7 @@ La solution à ce problème consiste bien sûr à utiliser une doublure de **`Ha
 **Complétez ce test avec une doublure de type `mock` et faites le passer au VERT !!!**
 
 <!-- 	@Test
-    	public void should_create_user_with_hashed_password() {
+    	void should_create_user_with_hashed_password() {
         
         	HashProvider hashProvider = mock(HashProvider.class);
         	when(hashProvider.hash("secret")).thenReturn("hash");

@@ -146,17 +146,17 @@ Pour vérifier le critère d’acceptation ***le dé a 6 faces et retourne un no
 		Dice theDice;
 
 		@Test
-		public void rollReturnsAValue() {
+		void rollReturnsAValue() {
 			//…à compléter avec l’implémentation donnée ci-dessus
 		}
 
 		@Test
-		public void identifyBadValuesGreaterThanNumberOfFaces() {
+		void identifyBadValuesGreaterThanNumberOfFaces() {
 			//…à compléter avec l’implémentation donnée ci-dessus
 		}
 
 		@Test
-		public void identifyBadValuesLesserThanOne() {
+		void identifyBadValuesLesserThanOne() {
 			//…à compléter avec l’implémentation donnée ci-dessus
 		}
 	}
@@ -173,7 +173,7 @@ public class DiceTest {
 	Dice theDice;
 
 	@Test
-	public void rollReturnsAValue() {
+	void rollReturnsAValue() {
 		theDice = new Dice(new Random());
 		for (int i = 0; i < 100; i++) {
 			int result = theDice.roll();
@@ -183,7 +183,7 @@ public class DiceTest {
 	}
 
 	@Test
-	public void identifyBadValuesGreaterThanNumberOfFaces() {
+	void identifyBadValuesGreaterThanNumberOfFaces() {
 		Random tooMuch = mock(Random.class);
 		when(tooMuch.nextInt(anyInt())).thenReturn(7);
 		theDice = new Dice(tooMuch);
@@ -192,7 +192,7 @@ public class DiceTest {
 	}
 
 	@Test
-	public void identifyBadValuesLesserThanOne() {
+	void identifyBadValuesLesserThanOne() {
 		Random notEnough = mock(Random.class);
 		when(notEnough.nextInt(anyInt())).thenReturn(-1);
 		theDice = new Dice(notEnough);
@@ -546,7 +546,7 @@ Ecrire dans **`src/test/main`** une classe **`GameTest`** qui décrit dans le co
 		Game game;
 
 		@Test
-		public void andTheWinnerIs() {
+		void andTheWinnerIs() {
 
 			Player player1 = mock(Player.class);
 			when(player1.getLastValue()).thenReturn(Optional.of(new Integer(5)));
